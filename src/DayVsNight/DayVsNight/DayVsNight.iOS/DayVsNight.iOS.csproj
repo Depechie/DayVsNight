@@ -134,7 +134,7 @@
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.0.0.5</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms.PancakeView">
       <Version>1.0.21</Version>
@@ -143,7 +143,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\DayVsNight\DayVsNight.csproj">
-      <Project>{2281C826-8A05-42C6-8329-6DF1CA9F6B99}</Project>
+      <Project>{160D0FC7-B7C6-4352-807F-6EC525641ACA}</Project>
       <Name>DayVsNight</Name>
     </ProjectReference>
   </ItemGroup>

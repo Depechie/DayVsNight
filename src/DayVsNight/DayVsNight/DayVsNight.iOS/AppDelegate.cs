@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+using Xamarin.Forms;
 
 namespace DayVsNight.iOS
 {
@@ -23,6 +24,7 @@ namespace DayVsNight.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
             LoadApplication(new App());

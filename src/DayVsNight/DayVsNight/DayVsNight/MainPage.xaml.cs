@@ -1,7 +1,10 @@
-﻿using DayVsNight.Themes;
+﻿using DayVsNight.Models;
+using DayVsNight.Themes;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Xamarin.Forms;
 
@@ -12,9 +15,34 @@ namespace DayVsNight
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage
     {
+        public ObservableCollection<Room> Rooms { get; set; } = new ObservableCollection<Room>();
+
         public MainPage()
         {
             InitializeComponent();
+
+            Room kitchen = new Room() { Name = "Kitchen" };
+            kitchen.Devices.Add(new Models.Device() { Name = "Ceiling light", IsActive = true });
+            kitchen.Devices.Add(new Models.Device() { Name = "Oven", IsActive = true });
+            kitchen.Devices.Add(new Models.Device() { Name = "Toaster", IsActive = true });
+            kitchen.Devices.Add(new Models.Device() { Name = "Dishwasher", IsActive = false });
+
+            Rooms.Add(kitchen);
+
+            Room study = new Room() { Name = "Study" };
+            study.Devices.Add(new Models.Device() { Name = "Ceiling light", IsActive = true });
+            study.Devices.Add(new Models.Device() { Name = "Bureau light", IsActive = false });
+
+            Rooms.Add(study);
+
+            Room bedRoom = new Room() { Name = "Bedroom" };
+            bedRoom.Devices.Add(new Models.Device() { Name = "Ceiling light", IsActive = false });
+            bedRoom.Devices.Add(new Models.Device() { Name = "Nightdesk light", IsActive = true });
+            bedRoom.Devices.Add(new Models.Device() { Name = "Airco", IsActive = true });
+
+            Rooms.Add(bedRoom);
+
+            BindingContext = this;
         }
 
         protected override void OnAppearing()

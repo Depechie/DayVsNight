@@ -29,9 +29,10 @@
             Source="{DynamicResource MountainImage}"
             VerticalOptions="End" />
 
-        <StackLayout Padding="20,30,20,0">
+        <StackLayout Padding="20,30,20,0"
+                     Grid.Row="0">
 
-            <!--  Header Section  -->
+            <!--Header Section-->  
             <Grid Margin="0,20,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -64,7 +65,7 @@
                 </circleimge:CircleImage>
             </Grid>
 
-            <!--  Top events alert  -->
+            <!--Top events alert-->  
             <Frame
                 Margin="0,20,0,0"
                 Padding="10"
@@ -100,7 +101,7 @@
 
             <Label Style="{StaticResource SubHeader}" Text="Temperature" />
 
-            <!--  Temp Guage  -->
+            <!--Temp Guage-->  
             <Grid HeightRequest="170">
 
                 <local:GaugeControl />
@@ -120,7 +121,8 @@
                     Text="◦◦◦"
                     TextColor="White" />
             </Grid>
-            <!--  Security  -->
+
+            <!--Security-->  
             <Label
                 Margin="0"
                 Style="{StaticResource SubHeader}"
@@ -128,7 +130,6 @@
 
             <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
                 <StackLayout Orientation="Horizontal">
-                    <!--  room  -->
                     <pancake:PancakeView CornerRadius="10">
                         <Grid
                             BackgroundColor="Red"
@@ -183,69 +184,38 @@
                             </Frame>
                         </Grid>
                     </pancake:PancakeView>
-
-
                 </StackLayout>
             </ScrollView>
-
         </StackLayout>
 
         <!--  bottom tab layout  -->
-        <ScrollView
-            Grid.Row="1"
-            Margin="20,20,20,40"
-            HorizontalScrollBarVisibility="Never"
-            Orientation="Horizontal">
-            <StackLayout Orientation="Horizontal" Spacing="20">
-                <StackLayout Orientation="Vertical">
-                    <BoxView
-                        BackgroundColor="White"
-                        HeightRequest="2"
-                        WidthRequest="130" />
-                    <Label Style="{StaticResource TabHeader}" Text="Kitchen" />
-                    <Label
-                        Margin="0,-5,0,0"
-                        Style="{StaticResource SubText}"
-                        Text="5 Active Devices"
-                        TextColor="White" />
-                </StackLayout>
-
-
-                <StackLayout Orientation="Vertical">
-                    <BoxView
-                        BackgroundColor="{StaticResource TabSubTextColor}"
-                        HeightRequest="1"
-                        WidthRequest="100" />
-                    <Label
-                        Style="{StaticResource TabHeader}"
-                        Text="Study"
-                        TextColor="{StaticResource TabSubTextColor}" />
-                    <Label
-                        Margin="0,-5,0,0"
-                        Style="{StaticResource TabSubText}"
-                        Text="5 Active Devices"
-                        TextColor="{StaticResource TabSubTextColor}" />
-                </StackLayout>
-
-                <StackLayout Orientation="Vertical">
-                    <BoxView
-                        BackgroundColor="{StaticResource TabSubTextColor}"
-                        HeightRequest="1"
-                        WidthRequest="100" />
-                    <Label
-                        Style="{StaticResource TabHeader}"
-                        Text="Bed Room"
-                        TextColor="{StaticResource TabSubTextColor}" />
-                    <Label
-                        Margin="0,-5,0,0"
-                        Style="{StaticResource TabSubText}"
-                        Text="5 Active Devices"
-                        TextColor="{StaticResource TabSubTextColor}" />
-                </StackLayout>
-            </StackLayout>
-
-        </ScrollView>
-
+        <CollectionView ItemsSource="{Binding Rooms}"
+                        Margin="20,20,20,20"
+                        HeightRequest="70"
+                        HorizontalScrollBarVisibility="Never"
+                        Grid.Row="1">
+            <CollectionView.ItemsLayout>
+                <ListItemsLayout ItemSpacing="20">
+                    <x:Arguments>
+                        <ItemsLayoutOrientation>Horizontal</ItemsLayoutOrientation>
+                    </x:Arguments>
+                </ListItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical">
+                        <BoxView
+                            BackgroundColor="White"
+                            HeightRequest="2"
+                            WidthRequest="130" />
+                        <Label Style="{StaticResource TabHeader}" Text="{Binding Name}" />
+                        <Label
+                            Margin="0,-5,0,0"
+                            Style="{StaticResource SubText}"
+                            Text="{Binding DevicesActive}" TextColor="White" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
-
 </ContentPage>
